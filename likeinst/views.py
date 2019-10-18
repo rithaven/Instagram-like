@@ -54,6 +54,35 @@ def timeline(request):
 
 #Single image page view function
 @login_required(login_url='/accounts/login')
+def single_image(request,image_id):
+       image = Image.objects.get( id= image_id)
+
+       return render(request, 'display/single_pic.html',{"image":image})
+
+#upvote page view function
+@login_required(login_url='/accounts/login')
+def upvote(request,image_id):
+       Imge = Image.objects.get(id=image_id)
+       like +=1
+       save_like()
+       return redirect(timeline)
+
+#search user page view function
+def search_results(request):
+       if 'image' in request.GET and request.GET["image"]:
+              search_input= request.GET.get("image")
+              searched_profiles= Profile.searched_profile(search_input)
+              message = f"{search_input}"
+
+              return render (request, 'display/search_pic.html',{"message":message,"images":searched_profiles})
+
+       else:
+              message: "you haven't searched for any term"
+              return render(request, '/dispaly/search_pic.html',{"message":message})
+
+
+
+
 
 
 
