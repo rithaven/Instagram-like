@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'likeinst',
     'bootstrap3',
+    'likeinst.apps.LikeinstConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

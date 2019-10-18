@@ -2,19 +2,19 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUploadForm,CommentForm,ProfileForm
 from django.http import HttpResponse
-from .models import Image,Profile,Likes,Follow,Comment,Unfollow
+from .models import Image,Profile,Likes,Follow,Comment
 from django.conf import settings
 
 
 # Home page view function
 
 @login_required(login_url='/accounts/login')
-def Welcome(request):
+def welcome(request):
     title= 'instagram'
     image_posts= Image.objects.all()
 
     print(image_posts)
-    return render(request,'welcome.html',{"title":title,"image_posts":image_posts})
+    return render(request,'display/welcome.html',{"title":title,"image_posts":image_posts})
 
 
 #comment page view function
@@ -25,7 +25,7 @@ def comment(request,id):
    current_user= request.user
    print(post)
    if request.method == 'Post':
-        from= CommentForm(request.Post)
+        form =CommentForm(request.Post)
         if form.is_valid():
                comment = form.save(commit = False)
                comment.user = current_user
@@ -51,6 +51,8 @@ def timeline(request):
        current_user = request.user
        theprofile = Profile.objects.order_by('-time_uploaded')
        comment = comment.objects.order_by('-time_comment')
+
+       return render(request,'all-inst/timeline.html',{"theprofile":theprofile,"comment":comment})
 
 #Single image page view function
 @login_required(login_url='/accounts/login')
@@ -80,16 +82,48 @@ def search_results(request):
               message: "you haven't searched for any term"
               return render(request, '/dispaly/search_pic.html',{"message":message})
 
+#upload_profile function to upload profile picture
 @login_required(login_url ='/accounts/login')
 def upload_profile(request):
        current_user = request.user
        title = 'Upload Profile'
        try:
-              
+              requested_prof= Profile.objects.get(user_id= current_user.id)
+              if request.method == 'POST':
+                     form = ProfileUploadForm(request.POST,request.FILES)
+
+                     if form.is_valid():
+                            requested_prof.profile_pic = form.cleaned_data['profile_pic']
+                            requested_prof.bio = form.cleaned_data['bio']
+                            requested_prof.profile. username = form.cleaned_data['bio']
+                            requested_prof.save_profile()
+                            return redirect(profile)
+
+                     else:
+                            form = ProfileUploadForm()
+       except:
+                            if request.method == 'POST':
+                                   form = ProfileUploadForm(request.FILES)
+
+
+                                   if form .is_valid():
+                                          new_prof =Profile(profile_pic = form.cleaned_data['profile_pic'], bio= form.cleaned_data['bio'],username= form.cleaned_data['username'])
+                                          new_prof.save_profile()
+                                          return redirect(profile)
+
+                                   else:
+                                          form = ProfileUploadForm()
+
+                                   return render(request,'display/upload_profpic.html', {"title":title,"current_user":current_user,"form":form})
+
+#send function that will allow user to fill in the form to upload images
+# @login_required(login_url='/accounts/login')
 
 
 
 
 
-       return render(request,'all-inst/timeline.html',{"theprofile":theprofile,"comment":comment})
+
+
+       
 
