@@ -80,7 +80,12 @@ def search_results(request):
               message: "you haven't searched for any term"
               return render(request, '/dispaly/search_pic.html',{"message":message})
 
-
+@login_required(login_url ='/accounts/login')
+def upload_profile(request):
+       current_user = request.user
+       title = 'Upload Profile'
+       try:
+              
 
 
 
