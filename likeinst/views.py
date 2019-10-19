@@ -85,40 +85,63 @@ def search_results(request):
 #upload_profile function to upload profile picture
 @login_required(login_url ='/accounts/login')
 def upload_profile(request):
-       current_user = request.user
-       title = 'Upload Profile'
-       try:
-              requested_prof= Profile.objects.get(user_id= current_user.id)
-              if request.method == 'POST':
-                     form = ProfileUploadForm(request.POST,request.FILES)
+    current_user = request.user
+    title = 'Upload Profile'
+    try:
+       requested_prof= Profile.objects.get(user_id= current_user.id)
+       if request.method == 'POST':
+           form = ProfileUploadForm(request.POST,request.FILES)
 
-                     if form.is_valid():
-                            requested_prof.profile_pic = form.cleaned_data['profile_pic']
-                            requested_prof.bio = form.cleaned_data['bio']
-                            requested_prof.profile. username = form.cleaned_data['bio']
-                            requested_prof.save_profile()
-                            return redirect(profile)
+           if form.is_valid():
+               requested_prof.profile_pic = form.cleaned_data['profile_pic']
+               requested_prof.bio = form.cleaned_data['bio']
+               requested_prof.username = form.cleaned_data['username']
+               requested_prof.save_profile()
+               return redirect(profile)
 
-                     else:
-                            form = ProfileUploadForm()
-       except:
-                            if request.method == 'POST':
-                                   form = ProfileUploadForm(request.FILES)
+       else:
+           form = ProfileUploadForm()
+
+    except:
+           if request.method == 'POST':
+               form = ProfileUploadForm(request.POST,request.FILES)
 
 
-                                   if form .is_valid():
-                                          new_prof =Profile(profile_pic = form.cleaned_data['profile_pic'], bio= form.cleaned_data['bio'],username= form.cleaned_data['username'])
-                                          new_prof.save_profile()
-                                          return redirect(profile)
+               if form .is_valid():
+                   new_prof =Profile(profile_pic = form.cleaned_data['profile_pic'], bio= form.cleaned_data['bio'],username= form.cleaned_data['username'])
+                   new_prof.save_profile()
+                   return redirect(profile)
 
-                                   else:
-                                          form = ProfileUploadForm()
+           else:
+              form = ProfileUploadForm()
 
-                                   return render(request,'display/upload_profpic.html', {"title":title,"current_user":current_user,"form":form})
+    return render(request,'display/upload_profpic.html', {"title":title,"current_user":current_user,"form":form})
 
 #send function that will allow user to fill in the form to upload images
-# @login_required(login_url='/accounts/login')
+@login_required(login_url='/accounts/login')
+def send(request):
+    '''
+    View function that display a form that allows users to upload images
+    '''
+    current_user = request.user
 
+    if request.method == 'POST':
+
+         form = ImageForm(request.POST, request.FILES)
+
+         if form.is_valid():
+              pic = form.save(commit = False)
+              pic.user_key = current_user
+
+              pic.likes +=0
+              pic.save()
+              return redirect(timeline)
+    else:
+           form =ImageForm()
+
+    return render(request,'dispaly/forward.html',{"form":form})
+
+           
 
 
 

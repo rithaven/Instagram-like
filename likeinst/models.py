@@ -67,8 +67,8 @@ class Profile(models.Model):
         self.save()
 
     @classmethod
-    def search_profile(cls,search_input):
-        found_profile = cls.objects.filter(first_name_icontains =search_input)
+    def searched_profile(cls,search_input):
+        found_profile = cls.objects.filter(first_name__icontains =search_input)
         return found_profile
 
 ############################################################################################################################

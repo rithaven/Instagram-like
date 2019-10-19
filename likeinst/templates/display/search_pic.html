@@ -1,0 +1,23 @@
+{%extends 'display/base.html'%}
+{% block content %}
+<div class="container" style="margin-top: 200px">
+
+  <div class="row">
+    {%if images%}
+    <h3>Found {{images|length}} of searched term {{message}}</h3>
+    {% else %}
+    <h2>Found 0 profile for the search term {{message}}</h2>
+    {% endif%}
+  </div>
+<div class="row">
+  {% if images %}
+  {% for image in images%}
+  <div class="col-sm-6 col-md-12">
+    <h1>{{image.first_name}}</h1>
+    <img src="{{profile_pic.image.url}}" alt="Image" style="width:514px;">
+  </div>
+  {%endfor%}
+  {% endif%}
+</div>
+</div>
+{% endblock%}

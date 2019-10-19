@@ -11,7 +11,7 @@ class ProfileForm(forms.ModelForm):
 
 class ProfileUploadForm(forms.ModelForm):
         class Meta:
-                modal = Profile
+                model= Profile
 
                 exclude = ['user']
 
