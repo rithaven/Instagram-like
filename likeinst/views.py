@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUploadForm,CommentForm,ProfileForm
 from django.http import HttpResponse
 from .models import Image,Profile,Likes,Follow,Comment
 from django.conf import settings
+ 
 
 
 # Home page view function
@@ -12,7 +13,7 @@ from django.conf import settings
 def welcome(request):
     title= 'instagram'
     image_posts= Image.objects.all()
-
+#     return redirect('welcome')
     print(image_posts)
     return render(request,'display/welcome.html',{"title":title,"image_posts":image_posts})
 
@@ -42,7 +43,7 @@ def profile(request):
     profile = Profile.objects.all()
     follower = Follow.objects.filter(user = profile)
 
-    return render(request,'userprofile.html',{"current_user":current_user,"profile":profile,"follower":follower})
+    return render(request,'display/userprofile.html',{"current_user":current_user,"profile":profile,"follower":follower})
 
 
 #timeline page view function
@@ -56,7 +57,7 @@ def timeline(request):
 
 #Single image page view function
 @login_required(login_url='/accounts/login')
-def single_image(request,image_id):
+def single_pic(request,image_id):
        image = Image.objects.get( id= image_id)
 
        return render(request, 'display/single_pic.html',{"image":image})
