@@ -1,0 +1,22 @@
+{% extends 'my-app/base.html'%}
+{% load staticfiles%}
+{% load bootstrap3%}
+{% block content% }
+ {{block.super}}
+
+ <div class="container">
+   <div class="col-md-6">
+     <h4> Comment</h4>
+     {% for comment in comments%}
+     <h5><span>{{comment.user_id}}:</span>{{comment}}</h5>
+     {%endfor%}
+   </div>
+   <div class="col-md-6">
+     <form method="post" enctype="multipart/form-data">
+      <input type="submit" class="btn btn-primary btn-sm" value="submit">
+      <input type="hidden" name="next" value="{{next}}">
+    </form>
+    <p> <a href="{% url 'timeline'%}">Previous</a></p>
+   </div>
+ </div>
+ {% endblock%}
