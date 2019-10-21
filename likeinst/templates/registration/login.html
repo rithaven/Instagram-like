@@ -1,15 +1,13 @@
 {%extends "registration/base.html"%}{% load bootstrap3 %}{% block content %}
-<div class="container" style="width:73%;">
-    <div style="display: flex;justify-content: center;margin-top: 4%; ">
-        <img src="../../static/images/instname.png"style="width: 400px;height: 100px">
-       </div>
+<div class="container">
+
   <div style="display: flex;justify-content: center;margin-top: 2%;width: 108%">
     
-    <div style="width: 385px;height: 680px">
-      <img src="../../static/images/phones.jpg" alt="instagram login phone">
+    <div style="width: 385px;height: 100px;margin-top: 6%;">
+      <img src="../../static/images/i.png" alt="instagram login phone">
     </div>
 
-   <div style="width: 17%;margin-left:5%;margin-top: 6%;">
+   <div style="width: 25%;margin-left:2%;margin-top: 6%;">
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
@@ -18,14 +16,22 @@
         <!-- <div class="panel-heading">
           <h3 class="text-center">Sign In</h3>
         </div> -->
-        <div class="panel-body">
-
+        <div class="panel-body"style="border-style: groove;height: 600px;">
+            <p style="text-align:center;font-family: 'Lobster', cursive;font-size: 50px">Instagram
+            <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+            </p>
+            <p>Sin in to see photos and videos from your freinds.</p>
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}{% bootstrap_form form%}
 
             <div class="form-group">
               <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login">
             </div>
+            <!-- <div class="container" style="text-align:center;">
+              <div class="line"style="height: 5px;background:black"></div>
+              <h5>OR</h5>
+              <div class="line" style="height: 5px;background:black"></div>
+            </div> -->
             <div class="panel-heading">
               <p class=" ‎_g9ean pull-left">Don't have an account?</p>
               <a href="{% url 'registration_register'%}">Sin Up</a>
