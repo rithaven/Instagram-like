@@ -14,7 +14,7 @@
 <div class="row">
   <div class="col-md-6">
     {% for image in timeline_pic%}
-    <div class="double">
+    <div >
       <div> <h5> {{image.user_key}}</h5></div>
       <img src={{image.image.url}} id="timeline_pic">
       <div> <a href="{% url 'like' image.id%}"></a>

@@ -11,38 +11,36 @@
 </head>
 
 
-<body>
-    
+<body style="margin-top:125px">
   {%for image in image_posts%}
-  <div class="card" style="margin-left: 200px; margin-top:80px">
-
-    <div class="container" style="border-top: 1px solid #EEEEEE; width:515px;height:100px;"><br><br>
-
-      <img src="{{image.image.url}}" style="width:100px; height:100px; border: radius 50%;padding:15px;margin-top:60px"><a style="color:black;" href="{%url 'profile'%}"><strong>{{image.user}}</strong></a>
+  <div class="card" style="margin-left: 200px; margin-top:20px;box-shadow: 0 4px 8px 0 rgba(0,0, 0, 0.2);width: 40%;transition: 0.3s;">
+    <div class="container" style="border-top: 1px solid #EEEEEE; width:515px;height:200px"><br><br>
+     <img src="{{image.image.url}}" class="master-card" style="width:100px; height:100px; border-radius: 50%;padding:15px;margin-top:20px"><a style="color:black;" href="{% url 'profile' %}">{{image.user}}</strong></a>
     </div>
 
-    <img src="{{image.image.url}}" alt="Image" style="width:300px;">
+    <img src="{{image.image.url}}" alt="Image" style="width:514px;margin-left: 20px">
 
-    <div class="container" style="margin: 50px">
+    <div class="container" style="margin: 50px;padding: 2px 16px">
 
       <div class="row">
         <div class="col-md-3">
           <i onclick="myFunction(this)" class="fa fa-heart" style="font-size:28px; background-color:white; margin-top:-200px;margin-left: -30px;"></i>
-          <a href="{% url 'comment' id=image.pk%}"><i class="fa fa-comment-o" style="font-size:24; margin-left:20px"></i></a>
+          <a href="{% url 'comment' id=image.pk %}"><i class="fa fa-comment-o" style="font-size:24px; margin-left:20px"></i></a>
         </div>
          
         <div class="col-md-3">
-          <i class="fa fa-bookmark-o" style="font-size:24px; margin-right:180px"></i>
+          <i class="fa fa-bookmark-o" style="font-size:24px; margin-right:180px"></i></div>
         </div>
         <br>
         
        
-        <div class="text-xs px-6 py-4 uppercase text-grey" style="margin-left:30px">{{image.pub_date| timesince}}</div>
+        <div class="text-xs px-6 py-4 uppercase text-grey" style="margin-left:-30px">{{image.pub_date| timesince}}</div>
         <hr style="width: 400px;margin-left:0px">
 
         <div class="mt-4 border-t border-grey-light mx-4 py-4">
           <textarea class="w-full no-outline h-6" style="width: 400px; border-left:none; border-right:none;border-bottom:none;" placeholder="Add a comment"></textarea>
-        </div>
+      
+        <div>
         
         {% for comment in image.comment.all%}
         <div class="row">
@@ -58,8 +56,9 @@
         </div>
       </div>
     </div>
-
+   </div>
   </div>
+  
    
 </body>
 <script>
@@ -68,10 +67,10 @@ function myFunction(x){
 }
 </script>
 {%endfor%}
+</html>
 <div style="border:1px solid #EEE;width:300px;height:350px;overflow:auto; float:right;margin-top: -5270px; margin-right:200px; border-left: none;border-top: none">
 <img src="{{image.image.url}}" class="master-card" style="width:100px;height:100px;border-radius:50%;padding:15px;"><strong style="margin-top:60px;">{{image.user}}</strong>
 <p style="margin-left: 80px; margin-top: 40px; color:#BDBDBD">{{image.pub_date| timesince}}</p>
 </div>
-</html>
 
 {%endblock%}

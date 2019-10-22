@@ -25,16 +25,20 @@ def comment(request,id):
    post = get_object_or_404(Image,id=id)
    current_user= request.user
    print(post)
+   
    if request.method == 'Post':
         form =CommentForm(request.Post)
+
         if form.is_valid():
-               comment = form.save(commit = False)
+               comment = form.save(commit=False)
                comment.user = current_user
+               comment.image = post
                comment.save()
-               return redirect('index')
-        else:
-               form = CommentForm()
-        return render(request,'comment.html',{"form":form})
+               return redirect('welcome')
+   else:
+        form = CommentForm()
+
+   return render(request,'my-app/comment.html',{"form":form})
 
 #profile page view function
 @login_required(login_url='/accounts/login')
@@ -51,9 +55,9 @@ def profile(request):
 def timeline(request):
        current_user = request.user
        theprofile = Profile.objects.order_by('-time_uploaded')
-       comment = comment.objects.order_by('-time_comment')
+       comment = Comment.objects.order_by('-time_comment')
 
-       return render(request,'all-inst/timeline.html',{"theprofile":theprofile,"comment":comment})
+       return render(request,'my-app/timeline.html',{"theprofile":theprofile,"comment":comment})
 
 #Single image page view function
 @login_required(login_url='/accounts/login')

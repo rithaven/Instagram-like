@@ -84,6 +84,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+        
     def delete_comment(self):
         self.delete()
 

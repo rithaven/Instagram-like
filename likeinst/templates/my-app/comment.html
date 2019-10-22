@@ -1,22 +1,27 @@
 {% extends 'my-app/base.html'%}
 {% load staticfiles%}
 {% load bootstrap3%}
-{% block content% }
- {{block.super}}
 
- <div class="container">
+{% block content%}
+{{block.super}}
+
+ <div class="container" style="margin-top:160px;float: left;">
+    <h4 style="text-align:center;padding-bottom: 10px"> Post your Comment</h4>
    <div class="col-md-6">
-     <h4> Comment</h4>
-     {% for comment in comments%}
+     
+     {% for comment in image.comments%}
      <h5><span>{{comment.user_id}}:</span>{{comment}}</h5>
      {%endfor%}
    </div>
-   <div class="col-md-6">
+
+   <div class="col-md-3">
      <form method="post" enctype="multipart/form-data">
-      <input type="submit" class="btn btn-primary btn-sm" value="submit">
+      {% csrf_token %}
+      {% bootstrap_form form%}
+      <input type="submit" class="btn btn-primary btn-sm" value="Submit">
       <input type="hidden" name="next" value="{{next}}">
     </form>
     <p> <a href="{% url 'timeline'%}">Previous</a></p>
    </div>
  </div>
- {% endblock%}
+{%endblock%}
