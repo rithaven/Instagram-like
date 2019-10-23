@@ -4,6 +4,7 @@ from .forms import ProfileUploadForm,CommentForm,ProfileForm
 from django.http import HttpResponse
 from .models import Image,Profile,Likes,Follow,Comment
 from django.conf import settings
+from .forms import PostForm
  
 
 
@@ -27,7 +28,7 @@ def comment(request,id):
    print(post)
    
    if request.method == 'Post':
-        form =CommentForm(request.Post)
+        form = CommentForm(request.Post)
 
         if form.is_valid():
                comment = form.save(commit=False)
@@ -146,6 +147,21 @@ def send(request):
 
     return render(request,'dispaly/forward.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
+def upload(request):
+    current_user = request.user
+    p = Profile.objects.filter(id=current_user.id).first()
+    image_name= Image.objects.filter(image_name=p).all()
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.image_name= p
+            post.save()
+            return redirect('welcome')
+    else:
+          form =PostForm()
+    return render(request, 'display/upload.html', {"form": form})
 
            
 

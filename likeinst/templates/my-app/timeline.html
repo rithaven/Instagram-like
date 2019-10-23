@@ -17,7 +17,7 @@
     <div >
       <div> <h5> {{image.user_key}}</h5></div>
       <img src={{image.image.url}} id="timeline_pic">
-      <div> <a href="{% url 'like' image.id%}"></a>
+      <div> <a href="{% url 'upvote' image.id%}"></a>
         <a href="{% url 'comment' image.id%}"></a>
         <span class="glyphicon glyphicon-bookmark"></span>
         <h5>{{image.likes}}likes</h5>

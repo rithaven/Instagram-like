@@ -19,4 +19,8 @@ class CommentForm(forms.ModelForm):
         class Meta:
               model = Comment
 
-              exclude = ['user','image']
+              exclude = ['user','image',]
+class PostForm(forms.ModelForm):
+        class Meta:
+              model = Image
+              fields = ('image_caption', 'image', 'image_name',)

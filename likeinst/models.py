@@ -14,7 +14,7 @@ class Image(models.Model):
     votes = models.IntegerField(default = 0)
     image_caption = models.TextField( null = True)
     pub_date = models.DateTimeField(auto_now_add = True, null =True)
-    comments_count = models.IntegerField(default=0)
+    comments = models.IntegerField(default=0)
 
     def __str__(self):
         return self.pic_name
@@ -84,7 +84,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
-        
+
     def delete_comment(self):
         self.delete()
 
