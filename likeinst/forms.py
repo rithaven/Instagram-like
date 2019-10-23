@@ -23,4 +23,4 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
         class Meta:
               model = Image
-              fields = ('image_caption', 'image', 'image_name',)
+              fields = ('user','image_caption', 'image', 'image_name',)

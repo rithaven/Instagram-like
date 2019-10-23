@@ -40,7 +40,7 @@ class Image(models.Model):
         ordering = ['-pub_date']
     
     def __str__(self):
-        return self.user.username
+        return self.image_name
 
     def save_profile(self):
         self.save()

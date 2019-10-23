@@ -5,7 +5,10 @@ from django.http import HttpResponse
 from .models import Image,Profile,Likes,Follow,Comment
 from django.conf import settings
 from .forms import PostForm
- 
+from . import models
+from django.conf.urls import url,include
+from django.conf.urls.static import static
+from django.contrib.auth.models import User
 
 
 # Home page view function
@@ -158,7 +161,7 @@ def upload(request):
             post = form.save(commit=False)
             post.image_name= p
             post.save()
-            return redirect('welcome')
+            return redirect('/')
     else:
           form =PostForm()
     return render(request, 'display/upload.html', {"form": form})
