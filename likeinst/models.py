@@ -65,7 +65,9 @@ class Profile(models.Model):
         self.delete()
     def save_profile(self):
         self.save()
-
+    @classmethod
+    def update_profile(cls,id,value):
+        cls.objects.filter(id=id).update(user_id= new_user)
     @classmethod
     def searched_profile(cls,search_input):
         found_profile = cls.objects.filter(first_name__icontains =search_input)
