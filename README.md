@@ -19,7 +19,7 @@ As a user of the application i should be able to:
 * Have a computer or a laptop
 * Have an internet  connection
 
-#live site: https://theinstagram1.herokuapp.com/
+# live site: https://theinstagram1.herokuapp.com/
 
 * install Django
 $ pip install django==1.11
