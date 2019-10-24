@@ -31,7 +31,7 @@ $ source virtual/bin/activate
 * Install gunicorn:(virtual)
 $python3.6 -m pip install gunicorn
 
-#Specifications
+Specifications
 -------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 |Behavior            | Behavior                 |                                         outcome|
