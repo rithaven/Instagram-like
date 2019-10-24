@@ -41,13 +41,13 @@ $python3.6 -m pip install gunicorn
 | Create an Account  |Fill the sign up form and |Create account and profile for the user and log |
 |                    | click submit             |                                       user into|                                 |Display current     |                          |                                                |
 |user's profile      |Click the user icon       |  Display  the current user's profile page with |
-|                    |                          |
-|                    |                          |
-|                    |                          |
-|                    |                          |
-|                    |                          |
-|                    |                          |
-
+|                    |                          |                                      their post|
+|Upload a post       | Click create a post      |Direct the user to a page with a form where the |
+|                    |                          |              user can create and submit a post | 
+|see other users     | click compass icon       |Direct the user to a page where they see a list |
+|                    |                          |                                  of other users|
+|comment on post     |click comment link        |Direct user to a page with a form for writing a |
+|                    |                          |                                      comment   | 
 ## Prerequisites
 
 You need the following to start working on the project on your local computer:
