@@ -32,17 +32,21 @@ $ source virtual/bin/activate
 $python3.6 -m pip install gunicorn
 
 #Specifications
--------------------------------------------------------------------
--------------------------------------------------------------------
-|#Behavior|#Behavior |                                     outcome|
-|---------|----------|--------------------------------------------|
-|         |          |                                            |
-|         |          |                                            |
-|         |          |                                            |
-|         |          |                                            |
-|         |          |                                            |
-|---------|----------|--------------------------------------------|
-
+-------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------
+|Behavior            | Behavior                 |                                         outcome|
+|--------------------|------------------------  |------------------------------------------------|
+|Display sign up for |  N/A                     |Display sign up form when a user visits the site|
+|                    |                          |                                                |
+| Create an Account  |Fill the sign up form and |Create account and profile for the user and log |
+|                    | click submit             |                                       user into|                                 |Display current     |                          |                                                |
+|user's profile      |Click the user icon       |  Display  the current user's profile page with |
+|                    |                          |
+|                    |                          |
+|                    |                          |
+|                    |                          |
+|                    |                          |
+|                    |                          |
 
 ## Prerequisites
 
