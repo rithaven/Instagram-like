@@ -56,24 +56,26 @@ You need the following to start working on the project on your local computer:
 - Have  a terminal to interact with the app 
 -Flask
 -Pip
+-HTML & CSS
 -boostrap4
--Django
+-Django virsion 1.11
 -virtual
 -A text Editor
+-Heroku
+-Postgress Database
 ```
 ## Installation
-$ git clone:https://github.com/rithaven/Personal-Gallery-application
+$ git clone:https://github.com/rithaven/Instagram-like
 
 ## Build & Deployment
  You need to have fully cloned it to run locally.
  Run it by: $ python manage.py runserver
 ## Technologies Used
-* Python v3.6
-* django-Boostrap4
+* Python v3.6.8
+* django-Boostrap3
 * Flask
 * postgres
-## live site:
-https://thegallery1.herokuapp.com/
+
 ## For more info:
 Contact me veneruth4@gmail.com
 
