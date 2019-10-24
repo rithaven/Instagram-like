@@ -40,9 +40,9 @@ def comment(request,id):
                comment.save()
                return redirect('welcome')
    else:
-        form = CommentForm()
+          form = CommentForm()
 
-   return render(request,'my-app/comment.html',{"form":form})
+   return render(request,'display/comment.html',{"form":form})
 
 #profile page view function
 @login_required(login_url='/accounts/login')

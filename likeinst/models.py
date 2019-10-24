@@ -76,22 +76,18 @@ class Profile(models.Model):
 ############################################################################################################################
 
 class Comment(models.Model):
-    '''
-     This is a Image model to represent Comment table whithin the database
-    '''
-    
     user = models.ForeignKey(User, null = True)
     image = models.ForeignKey(Image, null=True,related_name='comment')
     comment= models.TextField(blank=True)
 
     def __str__(self):
-        return self.comment
+            return self.comment
 
     def delete_comment(self):
-        self.delete()
+            self.delete()
 
     def save_comment(self):
-        self.save()
+            self.save()
 
 ############################################################################################################################
 

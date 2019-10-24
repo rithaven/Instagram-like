@@ -15,12 +15,13 @@ class ProfileUploadForm(forms.ModelForm):
 
                 exclude = ['user']
 
+
+class PostForm(forms.ModelForm):
+        class Meta:
+              model = Image
+              fields = ('user','image_caption', 'image', 'image_name',)
 class CommentForm(forms.ModelForm):
         class Meta:
               model = Comment
 
               exclude = ['user','image',]
-class PostForm(forms.ModelForm):
-        class Meta:
-              model = Image
-              fields = ('user','image_caption', 'image', 'image_name',)
