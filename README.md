@@ -1,7 +1,7 @@
 # [Istagram-like](https://theinstagram1.herokuapp.com/)
 This application was built by Django version 1.11 a python framework.
 Instagram-like is an application  that lets you display your photos for others to view,comment,like,follow and unfollow. 
-## 18th-December-2019
+## 18th-october-2019
 ## By Ritha
 ## Decription
 
